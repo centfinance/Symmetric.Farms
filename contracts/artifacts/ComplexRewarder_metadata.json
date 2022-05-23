@@ -1,0 +1,741 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "_rewardToken",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_rewardPerSecond",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_chef",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [],
+				"name": "LogInit",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pid",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "LogOnReward",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pid",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "allocPoint",
+						"type": "uint256"
+					}
+				],
+				"name": "LogPoolAddition",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "rewardPerSecond",
+						"type": "uint256"
+					}
+				],
+				"name": "LogRewardPerSecond",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pid",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "allocPoint",
+						"type": "uint256"
+					}
+				],
+				"name": "LogSetPool",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "pid",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "lastRewardTime",
+						"type": "uint64"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "lpSupply",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "accSymmPerShare",
+						"type": "uint256"
+					}
+				],
+				"name": "LogUpdatePool",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "allocPoint",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_pid",
+						"type": "uint256"
+					}
+				],
+				"name": "add",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "claimOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "pids",
+						"type": "uint256[]"
+					}
+				],
+				"name": "massUpdatePools",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lpToken",
+						"type": "uint256"
+					}
+				],
+				"name": "onSymmReward",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "pendingOwner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_pid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "pendingToken",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "pending",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "pendingTokens",
+				"outputs": [
+					{
+						"internalType": "contract IERC20[]",
+						"name": "rewardTokens",
+						"type": "address[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "rewardAmounts",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "poolIds",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "poolInfo",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "accSymmPerShare",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint64",
+						"name": "lastRewardTime",
+						"type": "uint64"
+					},
+					{
+						"internalType": "uint64",
+						"name": "allocPoint",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "poolLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "pools",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address payable",
+						"name": "to",
+						"type": "address"
+					}
+				],
+				"name": "reclaimTokens",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "rewardPerSecond",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "rewardToken",
+				"outputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_pid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_allocPoint",
+						"type": "uint256"
+					}
+				],
+				"name": "set",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_rewardPerSecond",
+						"type": "uint256"
+					}
+				],
+				"name": "setRewardPerSecond",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "direct",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "renounce",
+						"type": "bool"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pid",
+						"type": "uint256"
+					}
+				],
+				"name": "updatePool",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint128",
+								"name": "accSymmPerShare",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint64",
+								"name": "lastRewardTime",
+								"type": "uint64"
+							},
+							{
+								"internalType": "uint64",
+								"name": "allocPoint",
+								"type": "uint64"
+							}
+						],
+						"internalType": "struct ComplexRewarder.PoolInfo",
+						"name": "pool",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "userInfo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rewardDebt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "unpaidRewards",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"add(uint256,uint256)": {
+					"params": {
+						"_pid": "Pid on chef",
+						"allocPoint": "AP of the new pool."
+					}
+				},
+				"massUpdatePools(uint256[])": {
+					"params": {
+						"pids": "Pool IDs of all to be updated. Make sure to update all active pools."
+					}
+				},
+				"pendingToken(uint256,address)": {
+					"params": {
+						"_pid": "The index of the pool. See `poolInfo`.",
+						"_user": "Address of user."
+					},
+					"returns": {
+						"pending": "SYMM reward for a given user."
+					}
+				},
+				"reclaimTokens(address,uint256,address)": {
+					"params": {
+						"amount": "Amount of tokens to reclaim",
+						"to": "Receiver of the tokens, first of his name, rightful heir to the lost tokens, reightful owner of the extra tokens, and ether, protector of mistaken transfers, mother of token reclaimers, the Khaleesi of the Great Token Sea, the Unburnt, the Breaker of blockchains.",
+						"token": "Token to reclaim, use 0x00 for Ethereum"
+					}
+				},
+				"set(uint256,uint256)": {
+					"params": {
+						"_allocPoint": "New AP of the pool.",
+						"_pid": "The index of the pool. See `poolInfo`."
+					}
+				},
+				"setRewardPerSecond(uint256)": {
+					"params": {
+						"_rewardPerSecond": "The amount of Symm to be distributed per second."
+					}
+				},
+				"updatePool(uint256)": {
+					"params": {
+						"pid": "The index of the pool. See `poolInfo`."
+					},
+					"returns": {
+						"pool": "Returns the pool that was updated."
+					}
+				}
+			},
+			"stateVariables": {
+				"totalAllocPoint": {
+					"details": "Total allocation points. Must be the sum of all allocation points in all pools."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"add(uint256,uint256)": {
+					"notice": "Add a new LP to the pool. Can only be called by the owner. DO NOT add the same LP token more than once. Rewards will be messed up if you do."
+				},
+				"massUpdatePools(uint256[])": {
+					"notice": "Update reward variables for all pools. Be careful of gas spending!"
+				},
+				"pendingToken(uint256,address)": {
+					"notice": "View function to see pending Token"
+				},
+				"poolInfo(uint256)": {
+					"notice": "Info of each pool."
+				},
+				"poolLength()": {
+					"notice": "Returns the number of chef pools."
+				},
+				"reclaimTokens(address,uint256,address)": {
+					"notice": "Allows owner to reclaim/withdraw any tokens (including reward tokens) held by this contract"
+				},
+				"set(uint256,uint256)": {
+					"notice": "Update the given pool's SYMM allocation point and `IRewarder` contract. Can only be called by the owner."
+				},
+				"setRewardPerSecond(uint256)": {
+					"notice": "Sets the symm per second to be distributed. Can only be called by the owner."
+				},
+				"updatePool(uint256)": {
+					"notice": "Update reward variables of the given pool."
+				},
+				"userInfo(uint256,address)": {
+					"notice": "Info of each user that stakes LP tokens."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/ComplexRewarder.sol": "ComplexRewarder"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 1500
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/ComplexRewarder.sol": {
+			"keccak256": "0x742298d630f41501710504d18c986d68dcc6df868babc3ed73a7afebbdacc99a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://75baed40a43d75d7803ea5330591d85ee07d4e402b2b81a5094936e619a8b6df",
+				"dweb:/ipfs/QmQapWAwfWoW37vZ7oBDZ6kzfNcY6ayLLf7k13oAMjy4Qf"
+			]
+		},
+		"contracts/SymmChef.sol": {
+			"keccak256": "0x128727a3c34e9b256a9a8c160a53bd4688f0e4a9845b1bd2c796d390fe5aa2e5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://985d3f3db996e87645269304795faa94a1bbe021aa5c637277edcdedf4da878e",
+				"dweb:/ipfs/QmRbSL5xfXV9XY7L7HXbkQiw5idnJvysb3QrHVaAZ1vsPQ"
+			]
+		},
+		"contracts/libs/BaseBoringBatchable.sol": {
+			"keccak256": "0xc2b0cbe698f95ecb5a4955eb4fbf8e3de7b2a6b6664197dc5e5c0b1a10c92a20",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8e4850267337ebd5161d2580aae740336ed55b82fec530421bd417b838c2e910",
+				"dweb:/ipfs/QmZCJdtA7Q88dRR5azzMcssdVqZo2WReycqAdAtrxUnrch"
+			]
+		},
+		"contracts/libs/BoringERC20.sol": {
+			"keccak256": "0x53c60c97346b8293fb51f4c19af795f78b4e7798ad617d891d28df165d36c0a0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e0733eda4fef726f2280672ebef58917f8782045cfaa831eb6bb2047f1114ec2",
+				"dweb:/ipfs/Qma6DCKSV7zAKxSRp4454JSSm1sMsQViaFCnVjTm2oxKA1"
+			]
+		},
+		"contracts/libs/BoringMath.sol": {
+			"keccak256": "0x3ac677f6a62022e4636839c42910485822fdf9345d44e8067e10171029908d6e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b86e092d42993491a413d177bd8c49a994302b427343ae093a25062661c997cb",
+				"dweb:/ipfs/QmefwNdLqXaxs8MqE11c2fdNtfDu8FLAjbZvVodmC7GSvF"
+			]
+		},
+		"contracts/libs/BoringOwnable.sol": {
+			"keccak256": "0x841cdf8ed0ba7b059f224b9f697c44c3d3803d2d53cf9145e543f4c358bd2c48",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8e0357cdb3655556b66437356ce67a5c3a38b52ff407f97ea7263fa01650a57a",
+				"dweb:/ipfs/QmNoe8MoMezLp7pFc9vFNLKBuHbSMpoxAKzMyfuCfXXwCT"
+			]
+		},
+		"contracts/libs/IERC20.sol": {
+			"keccak256": "0x1759ebab89bb9887d2ac65be9e40ad860662fc618a8aa108a8eac79bf563df85",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://767f9003960dac7f879c1a7868a3ec8070446f9cab034b5ae78e782bf2fcae62",
+				"dweb:/ipfs/QmbtW7pWgqD1wpyD5UrfHiJeoYubHZTGpQ4m99CCofdjTV"
+			]
+		},
+		"contracts/libs/IRewarder.sol": {
+			"keccak256": "0x9533ee8c16d53ce043354d20379ee47707b73e065d4dd6a12f634b37e346459d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c0305052b71fdb9beb870684be8ea02b64f8cedc94468aafda6927fe7cb107b1",
+				"dweb:/ipfs/QmTEgBf5cnuPYdVGTMePc61qmNzt1NcKAnWiNxHvVMermL"
+			]
+		},
+		"contracts/libs/SignedSafeMath.sol": {
+			"keccak256": "0x4ddb98aaba09ff125a15fad3e4888d5e14418546af13bad106a492e5dd419315",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9f1c16ea1b882255c6d619109853a60d5d2660a231c76ae2c64ad471c432e100",
+				"dweb:/ipfs/Qmdj72vivpsWumc9gc1X2YDUETDrDz91hVESMZqDnJQjZZ"
+			]
+		}
+	},
+	"version": 1
+}
